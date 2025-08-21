@@ -21,7 +21,7 @@
     nav a:hover { background:#666; }
     main { flex:1; padding:20px; text-align:center; }
     .btn {
-      display: inline-block;
+      display:inline-block;
       background: #e63946;
       color: white;
       padding: 12px 20px;
@@ -44,9 +44,9 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
+    <a href="blogs.html">Dragon Blogs</a>
     <a href="contact.html">Contact Us</a>
-    <a href="about.html">About Us</a>
-    <a href="privacy.html">Privacy</a>
+
   </nav>
 
   <!-- Main -->
@@ -54,11 +54,34 @@
     <h2>Welcome!</h2>
     <p>Explore the magic of Dragon Store. Buy amazing products online with fast delivery.</p>
     <a href="products.html" class="btn">Get Started</a>
+    <p id="orderCount" style="margin-top:15px; font-size:16px; color:#444;">Total Orders: Loading...</p>
   </main>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Dragon Store (DS) - All Rights Reserved</p>
   </footer>
+
+  <!-- Script for live order count -->
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbwRuS-fZq56m5hVzG9k9YyKQ5snP1BvMjlMdIHwnsp_LzbdnyPrEa2E2TWd5tEWa__r/exec"; // Replace with your Apps Script URL
+
+    async function loadOrderCount() {
+      try {
+        let response = await fetch(API_URL + "?type=orderscount");
+        let data = await response.json();
+        document.getElementById("orderCount").innerText = "✅ Total Orders: " + data.totalOrders;
+      } catch (err) {
+        document.getElementById("orderCount").innerText = "❌ Error loading order count";
+      }
+    }
+
+    // Load immediately on page load
+    loadOrderCount();
+
+    // Refresh every 10 seconds
+    setInterval(loadOrderCount, 10000);
+  </script>
 </body>
 </html>
+
