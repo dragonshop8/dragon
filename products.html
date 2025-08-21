@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -34,26 +34,46 @@
       transition: transform 0.2s ease-in-out;
     }
     .card:hover { transform: scale(1.03); }
-    .card img { 
-      max-width:100%; 
-      height:200px; 
-      object-fit:cover; 
-      border-radius:5px; 
-    }
-    .card h3 { margin:10px 0; }
-    .card p { font-size:14px; color:#555; }
+    .card img { max-width:100%; height:200px; object-fit:cover; border-radius:5px; }
     .price { font-size:18px; font-weight:bold; color:#e63946; margin:10px 0; }
     button { background:#457b9d; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; }
     button:hover { background:#1d3557; }
     footer { background:#222; color:#fff; text-align:center; padding:10px; }
+
+    /* Modal form */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
+    .modal-content { background:white; padding:20px; border-radius:8px; width:90%; max-width:400px; }
+    .modal-content h2 { margin-top:0; text-align:center; }
+    .form-group { margin-bottom:15px; }
+    label { display:block; font-weight:bold; margin-bottom:5px; }
+    input, select { width:100%; padding:8px; border:1px solid #ccc; border-radius:5px; }
+    .close { float:right; cursor:pointer; font-size:20px; }
+    .btn-submit { background:#e63946; color:white; padding:10px; border:none; border-radius:5px; width:100%; cursor:pointer; }
+    .btn-submit:hover { background:#d62828; }
+
+    /* Loader spinner */
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #e63946;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin:auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
     <h1><span>DS</span> - Dragon Store</h1>
-
   </header>
+
+  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
@@ -74,11 +94,90 @@
     <p>&copy; 2025 Dragon Store (DS) - All Rights Reserved</p>
   </footer>
 
+  <!-- Order Form Modal -->
+  <div class="modal" id="orderModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Delivery Details</h2>
+      <form id="orderForm">
+        <input type="hidden" id="productName">
+        <input type="hidden" id="productPrice">
+
+        <div class="form-group">
+          <label>Product</label>
+          <input type="text" id="productDisplay" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="customerName" required>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="text" id="customerPhone" required>
+        </div>
+
+        <div class="form-group">
+          <label>Location</label>
+          <select id="location" required onchange="updateDeliveryFee()">
+            <option value="">Select Location</option>
+            <option value="Kashan-kul">Kashan-kul</option>
+            <option value="Metow">Metow</option>
+            <option value="Darai-khushqeq">Darai-khushqeq</option>
+            <option value="Oubara-1">Oubara-1</option>
+            <option value="Ebara-2">Ebara-2</option>
+            <option value="Dasht">Dasht</option>
+            <option value="Jangle">Jangle</option>
+            <option value="Beband">Beband</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Delivery Fee</label>
+          <input type="text" id="deliveryFee" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Total Amount</label>
+          <input type="text" id="totalAmount" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Payment Method</label>
+          <input type="text" value="Easypaisa - 03415761930" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Transaction ID</label>
+          <input type="text" id="transactionId" required>
+        </div>
+
+        <!-- Loader -->
+        <div id="loading" style="display:none; text-align:center; margin:10px 0;">
+          <div class="loader"></div>
+          <p>Placing your order...</p>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn-submit">Place Order</button>
+      </form>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script>
-     
+    const API_URL = "https://script.google.com/macros/s/AKfycbx0JyIXeRa5DrGdeqW1Wz012GtgoQhi7YPqiVCbEXyrlm2P372_DX_Az3ktAwSrikW8/exec"; // Replace with your deployed Apps Script URL
 
-    const API_URL = "https://script.google.com/macros/s/AKfycbzEgHmfM56IXKT_oPOf7NvP9M7qzqLXGKeyf1JRKdzPHf_2PPVrckNRysw41BA0tHut/exec"; // <-- Replace with your deployed Apps Script URL
+    const deliveryFees = {
+      "Kashan-kul": 300,
+      "Metow": 250,
+      "Darai-khushqeq": 250,
+      "Oubara-1": 200,
+      "Ebara-2": 200,
+      "Dasht": 200,
+      "Jangle": 250,
+      "Beband": 300
+    };
 
     async function loadProducts() {
       let container = document.getElementById("product-list");
@@ -87,8 +186,7 @@
       try {
         let response = await fetch(API_URL);
         let products = await response.json();
-
-        container.innerHTML = ""; // clear old content
+        container.innerHTML = "";
 
         if(products.length === 0){
           container.innerHTML = "<p>No products available.</p>";
@@ -103,7 +201,7 @@
             <h3>${p.name}</h3>
             <p class="price">${p.price}</p>
             <p>${p.description}</p>
-            <button>Add to Cart</button>
+            <button onclick="openModal('${p.name}', '${p.price}')">Buy Now</button>
           `;
           container.appendChild(card);
         });
@@ -111,6 +209,65 @@
         container.innerHTML = "<p>Error loading products.</p>";
       }
     }
+
+    function openModal(name, price) {
+      document.getElementById("orderModal").style.display = "flex";
+      document.getElementById("productName").value = name;
+      document.getElementById("productPrice").value = price;
+      document.getElementById("productDisplay").value = name + " - " + price;
+
+      // Reset fees when opening
+      document.getElementById("deliveryFee").value = "";
+      document.getElementById("totalAmount").value = price.replace(/[^0-9.]/g, "");
+    }
+
+    function closeModal() {
+      document.getElementById("orderModal").style.display = "none";
+    }
+
+    function updateDeliveryFee() {
+      let location = document.getElementById("location").value;
+      let deliveryFee = deliveryFees[location] || 0;
+      document.getElementById("deliveryFee").value = deliveryFee;
+
+      // Calculate total
+      let productPrice = parseFloat(document.getElementById("productPrice").value.replace(/[^0-9.]/g, "")) || 0;
+      let total = productPrice + deliveryFee;
+      document.getElementById("totalAmount").value = total;
+    }
+
+    document.getElementById("orderForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("submitBtn").disabled = true;
+
+      let orderData = {
+        product: document.getElementById("productName").value,
+        price: document.getElementById("productPrice").value,
+        name: document.getElementById("customerName").value,
+        phone: document.getElementById("customerPhone").value,
+        location: document.getElementById("location").value,
+        deliveryFee: document.getElementById("deliveryFee").value,
+        totalAmount: document.getElementById("totalAmount").value,
+        transactionId: document.getElementById("transactionId").value
+      };
+
+      try {
+        let res = await fetch(API_URL, {
+          method: "POST",
+          body: JSON.stringify(orderData)
+        });
+        let result = await res.json();
+        alert("✅ " + result.message);
+        closeModal();
+      } catch (err) {
+        alert("❌ Error placing order.");
+      } finally {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("submitBtn").disabled = false;
+      }
+    });
 
     loadProducts();
   </script>
