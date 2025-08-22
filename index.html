@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DS - Dragon Store</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { 
+      font-family: Arial, sans-serif; 
+      background:#f4f4f4; 
+      margin:0; 
+      display:flex; 
+      flex-direction:column; 
+      min-height:100vh;
+    }
+    header { background:#222; color:#fff; text-align:center; padding:15px; }
+    header h1 span { color:#e63946; }
+    nav { display:flex; justify-content:center; background:#444; flex-wrap:wrap; }
+    nav a { color:white; padding:14px 20px; text-decoration:none; }
+    nav a:hover { background:#666; }
+    main { flex:1; padding:20px; text-align:center; }
+    .btn {
+      display:inline-block;
+      background: #e63946;
+      color: white;
+      padding: 12px 20px;
+      margin-top: 20px;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+    .btn:hover { background: #d62828; }
+    footer { background:#222; color:#fff; text-align:center; padding:10px; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1><span>DS</span> - Dragon Store</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="blogs.html">Dragon Blogs</a>
+    
+  </nav>
+
+  <!-- Main -->
+  <main>
+    <h2>Welcome!</h2>
+    <p>Explore the magic of Dragon Store. Buy amazing products online with fast delivery.</p>
+    <a href="products.html" class="btn">Get Started</a>
+    <p id="orderCount" style="margin-top:15px; font-size:16px; color:#444;">Total Orders: Loading...</p>
+  </main>
+
+<footer style="background:#111; padding:10px; text-align:center; border-top:1px solid #333;">
+  <p style="margin:5px 0; font-size:14px;">
+    <a href="about.html" style="color:#eee; text-decoration:none; margin:0 8px;">About Us</a> | 
+    <a href="privacy.html" style="color:#eee; text-decoration:none; margin:0 8px;">Privacy Policy</a> | 
+    <a href="terms.html" style="color:#eee; text-decoration:none; margin:0 8px;">Terms & Conditions</a> | 
+    <a href="contact.html" style="color:#eee; text-decoration:none; margin:0 8px;">Contact</a>
+  </p>
+  <p style="font-size:12px; color:#aaa; margin-top:4px;">
+    © 2025 DS Dragon Store
+  </p>
+</footer>
+
+
+  <!-- Script for live order count -->
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbwRuS-fZq56m5hVzG9k9YyKQ5snP1BvMjlMdIHwnsp_LzbdnyPrEa2E2TWd5tEWa__r/exec"; // Replace with your Apps Script URL
+
+    async function loadOrderCount() {
+      try {
+        let response = await fetch(API_URL + "?type=orderscount");
+        let data = await response.json();
+        document.getElementById("orderCount").innerText = "✅ Total Orders: " + data.totalOrders;
+      } catch (err) {
+        document.getElementById("orderCount").innerText = "❌ Error loading order count";
+      }
+    }
+
+    // Load immediately on page load
+    loadOrderCount();
+
+    // Refresh every 10 seconds
+    setInterval(loadOrderCount, 10000);
+  </script>
+</body>
+</html>
+
