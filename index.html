@@ -33,20 +33,6 @@
     .btn:hover { background: #d62828; }
     footer { background:#222; color:#fff; text-align:center; padding:10px; }
   </style>
-  <!-- Favicon -->
-<link rel="icon" href="/logo.png" type="image/png">
-<link rel="apple-touch-icon" href="/logo.png">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "url": "https://madaklashtdragon.shop",
-  "logo": "https://madaklashtdragon.shop/logo.png",
-  "name": "Dragon Store"
-}
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9130878330155264"
-     crossorigin="anonymous"></script>  
 </head>
 <body>
   <!-- Header -->
@@ -59,8 +45,7 @@
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
     <a href="blogs.html">Dragon Blogs</a>
-    <a href="contact.html">Contact Us</a>
-
+    
   </nav>
 
   <!-- Main -->
@@ -71,10 +56,18 @@
     <p id="orderCount" style="margin-top:15px; font-size:16px; color:#444;">Total Orders: Loading...</p>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Dragon Store (DS) - All Rights Reserved</p>
-  </footer>
+<footer style="background:#111; padding:10px; text-align:center; border-top:1px solid #333;">
+  <p style="margin:5px 0; font-size:14px;">
+    <a href="about.html" style="color:#eee; text-decoration:none; margin:0 8px;">About Us</a> | 
+    <a href="privacy.html" style="color:#eee; text-decoration:none; margin:0 8px;">Privacy Policy</a> | 
+    <a href="terms.html" style="color:#eee; text-decoration:none; margin:0 8px;">Terms & Conditions</a> | 
+    <a href="contact.html" style="color:#eee; text-decoration:none; margin:0 8px;">Contact</a>
+  </p>
+  <p style="font-size:12px; color:#aaa; margin-top:4px;">
+    © 2025 DS Dragon Store
+  </p>
+</footer>
+
 
   <!-- Script for live order count -->
   <script>
@@ -84,7 +77,7 @@
       try {
         let response = await fetch(API_URL + "?type=orderscount");
         let data = await response.json();
-        document.getElementById("orderCount").innerText = "✅ Total Orders: " + data.totalOrders;
+        document.getElementById("orderCount").innerText = " Total Orders: " + data.totalOrders;
       } catch (err) {
         document.getElementById("orderCount").innerText = "❌ Error loading order count";
       }
@@ -98,6 +91,4 @@
   </script>
 </body>
 </html>
-
-
 
