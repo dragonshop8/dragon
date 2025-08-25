@@ -1,28 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- Homepage -->
+
+  <!-- Home -->
+  <url>
+    <loc>https://madaklashtdragon.shop/index.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>1.0</priority>
+  </url>
   <url>
     <loc>https://madaklashtdragon.shop/</loc>
-    <lastmod>2025-08-22</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-25</lastmod>
     <priority>1.0</priority>
   </url>
 
-  <!-- Example Product Page -->
+  <!-- Products -->
   <url>
-    <loc>https://madaklashtdragon.shop/products</loc>
-    <lastmod>2025-08-22</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://madaklashtdragon.shop/products.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blogs -->
+  <url>
+    <loc>https://madaklashtdragon.shop/blogs.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog Articles -->
+  <url>
+    <loc>https://madaklashtdragon.shop/ai-transformations-2025.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://madaklashtdragon.shop/madaklasht-valley.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://madaklashtdragon.shop/early-warning-technology.html</loc>
+    <lastmod>2025-08-25</lastmod>
     <priority>0.8</priority>
   </url>
 
-  <!-- Example Contact Page -->
+
+  <!-- Required Pages for AdSense -->
   <url>
-    <loc>https://madaklashtdragon.shop/contact</loc>
-    <lastmod>2025-08-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://madaklashtdragon.shop/about.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madaklashtdragon.shop/contact.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madaklashtdragon.shop/privacy.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://madaklashtdragon.shop/terms.html</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
