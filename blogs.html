@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dragon Blogs</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { 
+      font-family: Arial, sans-serif; 
+      background:#f4f4f4; 
+      margin:0; 
+      display:flex; 
+      flex-direction:column; 
+      min-height:100vh;
+    }
+    header { background:#222; color:#fff; text-align:center; padding:15px; }
+    header h1 span { color:#e63946; }
+    nav { display:flex; justify-content:center; background:#444; flex-wrap:wrap; }
+    nav a { color:white; padding:14px 20px; text-decoration:none; }
+    nav a:hover { background:#666; }
+    main { flex:1; padding:20px; max-width:1100px; margin:auto; }
+    
+    .blogs-container {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap:20px;
+    }
+    .blog-card {
+      background:#fff;
+      border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.15);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .blog-card img {
+      width:100%;
+      height:200px;
+      object-fit:cover;
+    }
+    .blog-card-content {
+      padding:15px;
+      flex:1;
+    }
+    .blog-card h3 {
+      margin-top:0;
+      color:#222;
+    }
+    .blog-card p {
+      color:#555;
+      font-size:14px;
+      line-height:1.4;
+    }
+    .read-more {
+      display:inline-block;
+      background:#e63946;
+      color:#fff;
+      padding:10px 15px;
+      margin-top:10px;
+      text-decoration:none;
+      border-radius:4px;
+    }
+    .read-more:hover { background:#c92d38; }
+
+    footer { background:#111; color:#fff; text-align:center; padding:10px; margin-top:auto; }
+    footer a { color:#eee; text-decoration:none; margin:0 8px; }
+    footer a:hover { text-decoration:underline; }
+  </style>
+  <link rel="icon" type="image/png" href="logo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1><span>DS</span> - Dragon Store</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="blogs.html">Dragon Blogs</a>
+  </nav>
+
+  <!-- Blog Listing -->
+  <main>
+    <h2 style="margin-bottom:20px;">
+  
+  <span style="color:#e63946;">Blogs</span>
+</h2>
+
+    <div class="blogs-container">
+      
+      <!-- Blog 1 -->
+      <div class="blog-card">
+        <img src="h.png" alt="Glacier Warning">
+        <div class="blog-card-content">
+          <h3>Technology Behind Early Warning Systems</h3>
+          <p>
+            Natural disasters such as floods, landslides, earthquakes, and glacier lake outbursts can strike suddenly...
+          </p>
+          <a class="read-more" href="early-warning-technology.html">Read More</a>
+        </div>
+      </div>
+
+      <!-- Blog 2 -->
+      <div class="blog-card">
+        <img src="mblog.png" alt="Madaklasht">
+        <div class="blog-card-content">
+          <h3>Hidden Paradise in the Hindukush: Madaklasht Valley</h3>
+          <p>
+            Nestled deep in the mighty Hindukush mountains, Madaklasht is a village that very few people outside Chitral know about. 
+      For the locals, it is...
+          </p>
+          <a class="read-more" href="madaklasht-valley.html">Read More</a>
+        </div>
+      </div>
+
+      <!-- Blog 3 -->
+      <div class="blog-card">
+        <img src="2.png" alt="Early Warning Tech">
+        <div class="blog-card-content">
+          <h3>How AI is Transforming Our World in 2025</h3>
+          <p>
+           As we move through 2025, <strong>Artificial Intelligence (AI)</strong> has firmly shifted from sci-fi fantasy 
+      to a powerful force shaping nearly every aspect of life. With genera...
+          </p>
+          <a class="read-more" href="ai-transformations-2025.html">Read More</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p style="margin:5px 0; font-size:14px;">
+      <a href="about.html">About Us</a> | 
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms & Conditions</a> | 
+      <a href="contact.html">Contact</a>
+    </p>
+    <p style="font-size:12px; color:#aaa; margin-top:4px;">
+      © 2025 DS Dragon Store
+    </p>
+  </footer>
+</body>
+</html>
+
+
+
