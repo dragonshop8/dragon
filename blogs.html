@@ -62,6 +62,68 @@
       border-radius:4px;
     }
     .read-more:hover { background:#c92d38; }
+    <style>
+/* Blog Listing Page */
+.blogs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.blog-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-card h2 {
+  font-size: 18px;
+  margin: 15px;
+  color: #222;
+}
+
+.blog-card p {
+  flex: 1;
+  margin: 0 15px 15px;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.blog-card .read-more {
+  display: inline-block;
+  margin: 0 15px 20px;
+  padding: 10px 16px;
+  background: #e63946; /* Dragon Red */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.blog-card .read-more:hover {
+  background: #c62832;
+}
+</style>
+
 
     footer { background:#111; color:#fff; text-align:center; padding:10px; margin-top:auto; }
     footer a { color:#eee; text-decoration:none; margin:0 8px; }
@@ -155,6 +217,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
