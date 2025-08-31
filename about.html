@@ -20,6 +20,48 @@
     footer a { color:#eee; text-decoration:none; margin:0 8px; }
     footer a:hover { text-decoration:underline; }
     footer .copy { font-size:12px; color:#aaa; margin-top:4px; }
+    /* Header */
+header { 
+  background: linear-gradient(135deg, #222, #e63946);
+  color:#fff; 
+  padding:20px; 
+  text-align:center; 
+}
+header h1 { font-size:2rem; }
+header h1 span { color:#ffd700; }
+
+/* Navigation */
+nav {
+  display:flex; 
+  justify-content:center; 
+  background:#333;
+  flex-wrap:wrap;
+}
+nav a {
+  color:white; 
+  padding:12px 18px; 
+  text-decoration:none; 
+  transition:0.3s;
+}
+nav a:hover {
+  background:#e63946; 
+  border-radius:5px;
+}
+
+/* Footer */
+footer {
+  background:#222; 
+  color:#ccc; 
+  text-align:center; 
+  padding:15px;
+  margin-top:40px;
+}
+footer a { 
+  color:#ffd700; 
+  text-decoration:none; 
+  margin:0 8px; 
+}
+
   </style>
   <link rel="icon" type="image/png" href="logo.png">
 <script type="application/ld+json">
@@ -35,12 +77,19 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
-  <header><h1><span>DS</span> - Dragon Store</h1></header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="blogs.html">Dragon Blogs</a>
-  </nav>
+  <!-- Header -->
+<header>
+  <h1><span>DS</span> - Dragon Store</h1>
+  <p>Unleash the power of shopping</p>
+</header>
+
+<!-- Navigation -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="blogs.html">Dragon Blogs</a>
+</nav>
+
   <main>
     <h2>About Us</h2>
     <p>Welcome to <strong>DS Dragon Store</strong> – your trusted online shop for quality products at fair prices. We started with a mission to make online shopping easy, reliable, and enjoyable for everyone.</p>
@@ -54,16 +103,19 @@
     <!-- Get Started button -->
     <a href="products.html" class="btn">Get Started</a>
   </main>
-  <footer>
-    <p>
-      <a href="about.html">About Us</a> | 
-      <a href="privacy.html">Privacy Policy</a> | 
-      <a href="terms.html">Terms & Conditions</a> | 
-      <a href="contact.html">Contact</a>
-    </p>
-    <p class="copy">© 2025 DS Dragon Store</p>
-  </footer>
+  <!-- Footer -->
+<footer>
+  <p>
+    <a href="about.html">About</a> | 
+    <a href="privacy.html">Privacy</a> | 
+    <a href="terms.html">Terms</a> | 
+    <a href="contact.html">Contact</a>
+  </p>
+  <p>© 2025 DS Dragon Store</p>
+</footer>
+
 </body>
 </html>
+
 
 
