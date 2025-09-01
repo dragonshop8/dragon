@@ -6,20 +6,53 @@
   <title>Terms & Conditions - DS Dragon Store</title>
   <style>
     html, body { margin:0; padding:0; height:100%; font-family:Arial, sans-serif; background:#fff; color:#333; display:flex; flex-direction:column; }
-    header { background:#222; color:#fff; padding:20px; text-align:center; }
-    header h1 { margin:0; } header span { color:#e63946; }
-    nav { background:#333; padding:10px; text-align:center; }
-    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; }
-    nav a:hover { color:#e63946; }
+   /* Header */
+header { 
+  background: linear-gradient(135deg, #222, #e63946);
+  color:#fff; 
+  padding:20px; 
+  text-align:center; 
+}
+header h1 { font-size:2rem; }
+header h1 span { color:#ffd700; }
+
+/* Navigation */
+nav {
+  display:flex; 
+  justify-content:center; 
+  background:#333;
+  flex-wrap:wrap;
+}
+nav a {
+  color:white; 
+  padding:12px 18px; 
+  text-decoration:none; 
+  transition:0.3s;
+}
+nav a:hover {
+  background:#e63946; 
+  border-radius:5px;
+}
+
     main { flex:1; padding:20px; text-align:center; }
     .btn { display:inline-block; background:#e63946; color:#fff; padding:12px 25px; margin-top:20px; border-radius:5px; text-decoration:none; font-weight:bold; }
     .btn:hover { background:#c92f3c; }
-    footer { background:#111; padding:10px; text-align:center; border-top:1px solid #333; }
-    footer p { margin:5px 0; font-size:14px; }
-    footer a { color:#eee; text-decoration:none; margin:0 8px; }
-    footer a:hover { text-decoration:underline; }
-    footer .copy { font-size:12px; color:#aaa; margin-top:4px; }
+/* Footer */
+footer {
+  background:#222; 
+  color:#ccc; 
+  text-align:center; 
+  padding:15px;
+  margin-top:40px;
+}
+footer a { 
+  color:#ffd700; 
+  text-decoration:none; 
+  margin:0 8px; 
+}
+
   </style>
+
   <link rel="icon" type="image/png" href="logo.png">
 <script type="application/ld+json">
 {
@@ -34,12 +67,18 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
-  <header><h1><span>DS</span> - Dragon Store</h1></header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="blogs.html">Dragon Blogs</a>
-  </nav>
+  <!-- Header -->
+<header>
+  <h1><span>DS</span> - Dragon Store</h1>
+  <p>Unleash the power of shopping</p>
+</header>
+
+<!-- Navigation -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="blogs.html">Dragon Blogs</a>
+</nav>
   <main>
     <h2>Terms & Conditions</h2>
     <p>By using DS Dragon Store, you agree to the following:</p>
@@ -53,16 +92,16 @@
     <!-- Get Started -->
     <a href="products.html" class="btn">Get Started</a>
   </main>
-  <footer>
-    <p>
-      <a href="about.html">About Us</a> | 
-      <a href="privacy.html">Privacy Policy</a> | 
-      <a href="terms.html">Terms & Conditions</a> | 
-      <a href="contact.html">Contact</a>
-    </p>
-    <p class="copy">© 2025 DS Dragon Store</p>
-  </footer>
+<!-- Footer -->
+<footer>
+  <p>
+    <a href="about.html">About</a> | 
+    <a href="privacy.html">Privacy</a> | 
+    <a href="terms.html">Terms</a> | 
+    <a href="contact.html">Contact</a>
+  </p>
+  <p>© 2025 DS Dragon Store</p>
+</footer>
+
 </body>
 </html>
-
-
