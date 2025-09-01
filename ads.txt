@@ -1,10 +1,1 @@
-Redirect 301 /ads.txt https://srv.adstxtmanager.com/19390/madaklashtdragon.shop.com
-server {
-    location ~ /ads.txt {
-        return 301 https://srv.adstxtmanager.com/19390/madaklashtdragon.shop.com;
-    }
-}
-<?php
-header('Location: https://srv.adstxtmanager.com/19390/madaklashtdragon.shop.com');
-exit;
-?>
+.
