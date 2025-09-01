@@ -14,11 +14,34 @@
       flex-direction:column; 
       min-height:100vh;
     }
-    header { background:#222; color:#fff; text-align:center; padding:15px; }
-    header h1 span { color:#e63946; }
-    nav { display:flex; justify-content:center; background:#444; flex-wrap:wrap; }
-    nav a { color:white; padding:14px 20px; text-decoration:none; }
-    nav a:hover { background:#666; }
+   /* Header */
+header { 
+  background: linear-gradient(135deg, #222, #e63946);
+  color:#fff; 
+  padding:20px; 
+  text-align:center; 
+}
+header h1 { font-size:2rem; }
+header h1 span { color:#ffd700; }
+
+/* Navigation */
+nav {
+  display:flex; 
+  justify-content:center; 
+  background:#333;
+  flex-wrap:wrap;
+}
+nav a {
+  color:white; 
+  padding:12px 18px; 
+  text-decoration:none; 
+  transition:0.3s;
+}
+nav a:hover {
+  background:#e63946; 
+  border-radius:5px;
+}
+
     main { flex:1; padding:20px; max-width:1100px; margin:auto; }
     
     .blogs-container {
@@ -62,71 +85,22 @@
       border-radius:4px;
     }
     .read-more:hover { background:#c92d38; }
-  
-/* Blog Listing Page */
-.blogs-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  max-width: 1100px;
-  margin: auto;
+/* Footer */
+footer {
+  background:#222; 
+  color:#ccc; 
+  text-align:center; 
+  padding:15px;
+  margin-top:40px;
+}
+footer a { 
+  color:#ffd700; 
+  text-decoration:none; 
+  margin:0 8px; 
 }
 
-.blog-card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease;
-}
-
-.blog-card:hover {
-  transform: translateY(-5px);
-}
-
-.blog-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.blog-card h2 {
-  font-size: 18px;
-  margin: 15px;
-  color: #222;
-}
-
-.blog-card p {
-  flex: 1;
-  margin: 0 15px 15px;
-  color: #555;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.blog-card .read-more {
-  display: inline-block;
-  margin: 0 15px 20px;
-  padding: 10px 16px;
-  background: #e63946; /* Dragon Red */
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  text-align: center;
-  transition: background 0.3s;
-}
-
-.blog-card .read-more:hover {
-  background: #c62832;
-}
-
-    footer { background:#111; color:#fff; text-align:center; padding:10px; margin-top:auto; }
-    footer a { color:#eee; text-decoration:none; margin:0 8px; }
-    footer a:hover { text-decoration:underline; }
   </style>
+
   <link rel="icon" type="image/png" href="logo.png">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9130878330155264"
      crossorigin="anonymous"></script>
@@ -190,13 +164,6 @@
           <a class="read-more" href="ai-transformations-2025.html">Read More</a>
         </div>
       </div>
-      <div class="blog-card">
-  <img src="3.png" alt="Tourism in Madaklasht">
-  <h2>Tourism in Madaklasht – A Hidden Gem of Chitral</h2>
-  <p>Madaklasht Valley, nestled in the Hindukush, is an emerging eco-tourism destination offering skiing, culture, and breathtaking views...</p>
-  <a href="madaklasht-tourism.html" class="read-more">Read More</a>
-</div>
-
 
     </div>
   </main>
@@ -215,6 +182,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
