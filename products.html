@@ -15,7 +15,6 @@
       min-height:100vh;
     }
 
-    /* Header */
     header { 
       background: linear-gradient(135deg, #222, #e63946);
       color:#fff; 
@@ -25,7 +24,6 @@
     header h1 { font-size:2rem; }
     header h1 span { color:#ffd700; }
 
-    /* Navigation */
     nav {
       display:flex; 
       justify-content:center; 
@@ -45,7 +43,6 @@
 
     main { flex:1; padding:20px; }
 
-    /* Search + Filters */
     #searchBar {
       padding:8px;
       width:60%;
@@ -55,7 +52,7 @@
     }
     .filters { text-align:center; margin:20px 0; }
     .filters button {
-      background:#e63946;   /* 🔴 Red */
+      background:#e63946;
       color:white; 
       border:none; 
       padding:8px 15px; 
@@ -65,11 +62,10 @@
       transition:0.3s;
     }
     .filters button:hover {
-      background:#ffd700;   /* 🟡 Golden */
+      background:#ffd700;
       color:#222; 
     }
 
-    /* Product Cards */
     .container { 
       display:grid; 
       grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); 
@@ -87,9 +83,8 @@
     .card img { max-width:100%; height:200px; object-fit:cover; border-radius:5px; }
     .price { font-size:18px; font-weight:bold; color:#e63946; margin:10px 0; }
 
-    /* Buy Now Button */
     button.buy-btn {
-      background:#e63946;   /* 🔴 Red */
+      background:#e63946;
       color:white;
       border:none;
       padding:10px 15px;
@@ -97,11 +92,8 @@
       cursor:pointer;
       transition:0.3s;
     }
-    button.buy-btn:hover {
-      background:#c62828;   /* Dark Red */
-    }
+    button.buy-btn:hover { background:#c62828; }
 
-    /* Footer */
     footer {
       background:#222; 
       color:#ccc; 
@@ -115,9 +107,22 @@
       margin:0 8px; 
     }
 
-    /* Modal form */
-    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
-    .modal-content { background:white; padding:20px; border-radius:8px; width:90%; max-width:400px; }
+    .modal { 
+      display:none; 
+      position:fixed; 
+      top:0; left:0; 
+      width:100%; height:100%; 
+      background:rgba(0,0,0,0.6); 
+      justify-content:center; 
+      align-items:center; 
+    }
+    .modal-content { 
+      background:white; 
+      padding:20px; 
+      border-radius:8px; 
+      width:90%; 
+      max-width:400px; 
+    }
     .modal-content h2 { margin-top:0; text-align:center; }
     .form-group { margin-bottom:15px; }
     label { display:block; font-weight:bold; margin-bottom:5px; }
@@ -126,7 +131,6 @@
     .btn-submit { background:#e63946; color:white; padding:10px; border:none; border-radius:5px; width:100%; cursor:pointer; }
     .btn-submit:hover { background:#c62828; }
 
-    /* Loader spinner */
     .loader {
       border: 4px solid #f3f3f3;
       border-top: 4px solid #e63946;
@@ -136,28 +140,22 @@
       animation: spin 1s linear infinite;
       margin:auto;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
   <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
-  <!-- Header -->
   <header>
     <h1><span>DS</span> - Dragon Store</h1>
     <p>Unleash the power of shopping</p>
   </header>
 
-  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
     <a href="blogs.html">Dragon Blogs</a>
   </nav>
 
-  <!-- Search & Filters -->
   <div class="filters">
     <input type="text" id="searchBar" placeholder=" Search products...">
     <div style="margin-top:10px;">
@@ -169,14 +167,12 @@
     </div>
   </div>
 
-  <!-- Products -->
   <main>
     <div class="container" id="product-list" style="text-align:center;">
       <div id="loadingSpinner" class="loader"></div>
     </div>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>
       <a href="about.html">About</a> | 
@@ -209,6 +205,11 @@
         <div class="form-group">
           <label>Phone Number</label>
           <input type="text" id="customerPhone" required>
+        </div>
+
+        <div class="form-group">
+          <label>Quantity</label>
+          <input type="number" id="quantity" min="1" value="1" required>
         </div>
 
         <div class="form-group">
@@ -246,7 +247,6 @@
           <input type="text" id="transactionId" required>
         </div>
 
-        <!-- Loader -->
         <div id="loading" style="display:none; text-align:center; margin:10px 0;">
           <div class="loader"></div>
           <p>Placing your order...</p>
@@ -257,9 +257,8 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbwpOORV8HfRZ-Vk3Yhv8J5bsrCDHp4vznimW3EWlRSHkwFdevsC9vWbK6W11rzWqwYy/exec"; // Replace with your deployed Apps Script URL
+    const API_URL = "https://script.google.com/macros/s/AKfycbwpOORV8HfRZ-Vk3Yhv8J5bsrCDHp4vznimW3EWlRSHkwFdevsC9vWbK6W11rzWqwYy/exec";
     let allProducts = [];
     let currentCategory = "All";
 
@@ -330,8 +329,7 @@
       document.getElementById("productName").value = name;
       document.getElementById("productPrice").value = price;
       document.getElementById("productDisplay").value = name + " - " + price;
-
-      // Reset fees
+      document.getElementById("quantity").value = 1;
       document.getElementById("deliveryFee").value = "";
       document.getElementById("totalAmount").value = price.replace(/[^0-9.]/g, "");
     }
@@ -345,11 +343,13 @@
       let deliveryFee = deliveryFees[location] || 0;
       document.getElementById("deliveryFee").value = deliveryFee;
 
-      // Calculate total
+      let quantity = parseInt(document.getElementById("quantity").value) || 1;
       let productPrice = parseFloat(document.getElementById("productPrice").value.replace(/[^0-9.]/g, "")) || 0;
-      let total = productPrice + deliveryFee;
+      let total = (productPrice * quantity) + deliveryFee;
       document.getElementById("totalAmount").value = total;
     }
+
+    document.getElementById("quantity").addEventListener("input", updateDeliveryFee);
 
     document.getElementById("orderForm").addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -360,6 +360,7 @@
       let orderData = {
         product: document.getElementById("productName").value,
         price: document.getElementById("productPrice").value,
+        quantity: document.getElementById("quantity").value,
         name: document.getElementById("customerName").value,
         phone: document.getElementById("customerPhone").value,
         location: document.getElementById("location").value,
